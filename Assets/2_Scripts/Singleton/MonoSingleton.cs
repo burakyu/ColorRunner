@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonoSingleton : MonoBehaviour
+public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    // Start is called before the first frame update
-    void Start()
+    private static volatile T instance = null;
+
+    public static T Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                // Search for existing instance.
+                instance = FindObjectOfType(typeof(T)) as T;
+            }
+
+            return instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
