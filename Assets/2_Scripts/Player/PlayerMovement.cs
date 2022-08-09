@@ -6,13 +6,14 @@ public class PlayerMovement : Player
 {
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
-    public float playerSpeed;
+    public float verticalSpeed;
+    public float horizontalSpeed;
     public float xRange;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * verticalSpeed);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,7 +35,7 @@ public class PlayerMovement : Player
 
     void Movement(float xDiff)
     {
-        transform.Translate(xDiff * Time.deltaTime * playerSpeed * Vector3.right / 100);
+        transform.Translate(xDiff * Time.deltaTime * horizontalSpeed * Vector3.right / 100);
     }
 
     void SetMovementRange()
