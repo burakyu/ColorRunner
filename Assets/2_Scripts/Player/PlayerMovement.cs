@@ -35,6 +35,7 @@ public class PlayerMovement : Player
 
     void Movement(float xDiff)
     {
+        
         transform.Translate(xDiff * Time.deltaTime * horizontalSpeed * Vector3.right / 100);
     }
 
