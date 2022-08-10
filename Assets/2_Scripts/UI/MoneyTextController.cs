@@ -19,12 +19,12 @@ public class MoneyTextController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnMissionDone.AddListener(UpdateMoneyText);
+        //EventManager.OnMissionDone.AddListener(UpdateMoneyText);
     }
 
     private void OnDisable()
     {
-        EventManager.OnMissionDone.RemoveListener(UpdateMoneyText);
+        //EventManager.OnMissionDone.RemoveListener(UpdateMoneyText);
     }
 
     private void UpdateMoneyText()

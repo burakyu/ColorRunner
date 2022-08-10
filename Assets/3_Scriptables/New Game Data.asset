@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb92a1b68a7a2c749a078d615645920f, type: 3}
   m_Name: New Game Data
   m_EditorClassIdentifier: 
-  colorLevel1: {r: 0.5529412, g: 0.41960785, b: 0.3882353, a: 0}
-  colorLevel2: {r: 0, g: 0, b: 0, a: 0}
+  colorLevel1: {r: 1, g: 0.16470589, b: 0.41568628, a: 0}
+  colorLevel2: {r: 1, g: 0, b: 0, a: 0.003921569}
   colorLevel3: {r: 0, g: 0, b: 0, a: 0}
   colorLevel4: {r: 0, g: 0, b: 0, a: 0}
   colorLevel5: {r: 0, g: 0, b: 0, a: 0}

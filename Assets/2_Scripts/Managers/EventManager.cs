@@ -6,5 +6,7 @@ using UnityEngine.Events;
 public static class EventManager 
 {
     public static UnityEvent OnLevelEnd = new UnityEvent();
-    public static UnityEvent OnMissionDone = new UnityEvent();
+    public static UnityEvent<Color> OnDoorTriggered = new UnityEvent<Color>();
+    public static UnityEvent OnColorChange = new UnityEvent();
+
 }
