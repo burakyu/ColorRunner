@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoSingleton<LevelManager>
 {
     private int currentLevel;
     public int CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
@@ -14,15 +14,34 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         //PlayerPrefs.DeleteAll();
+        //CurrentLevel = PlayerPrefs.GetInt("currentLevel");
+        //currentSceneIndex = (currentLevel % 4) + 1;
+        //if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
+        //{
+        //    SceneManager.LoadScene(currentSceneIndex);
+
+        //}
+
+        //Debug.Log(currentLevel);
+    }
+
+    private void Start()
+    {
+        //StartCoroutine(LoadSceneCo());
+    }
+
+    public void LoadScene()
+    {
         CurrentLevel = PlayerPrefs.GetInt("currentLevel");
         currentSceneIndex = (currentLevel % 4) + 1;
         if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
         {
-            SceneManager.LoadScene(currentSceneIndex);
+            SceneManager.LoadSceneAsync(currentSceneIndex);
 
         }
 
         Debug.Log(currentLevel);
+        
     }
 
     public void NextLevel()

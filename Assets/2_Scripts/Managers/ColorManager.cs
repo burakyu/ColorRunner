@@ -28,12 +28,14 @@ public class ColorManager : MonoBehaviour
     {
         Player.Instance.MeshRenderer.material.color = Color.Lerp(Player.Instance.MeshRenderer.material.color, gateColor, 0.4f);
         EventManager.OnColorChange.Invoke();
+        CompareColors();
     }
 
     // Compare colors when the level is over
     public void CompareColors()
     {
         endColorDiff = Player.Instance.MeshRenderer.material.color - deneme;
+        Debug.Log(endColorDiff);
         if (Mathf.Abs(endColorDiff.r) > 0.3f || Mathf.Abs(endColorDiff.g) > 0.3f || Mathf.Abs(endColorDiff.b) > 0.3f)
         {
             Debug.Log("GAME OVER!");
