@@ -10,7 +10,7 @@ public class Player : MonoSingleton<Player>
     public Rigidbody Rigidbody { get; private set; }
 
     public Animator Animator { get; private set; }
-    public MeshRenderer MeshRenderer { get; private set; }
+    public SkinnedMeshRenderer SkinnedMeshRenderer { get; private set; }
 
     private void Awake()
     {
@@ -22,6 +22,6 @@ public class Player : MonoSingleton<Player>
         Rigidbody = GetComponent<Rigidbody>();
 
         Animator = GetComponentInChildren<Animator>();
-        MeshRenderer = GetComponentInChildren<MeshRenderer>();
+        SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 }

@@ -23,6 +23,6 @@ public class PlayersColorImage : MonoBehaviour
     }
     public void UpdateColor()
     {
-        imageColor.color = Player.Instance.MeshRenderer.material.color;
+        imageColor.color = Player.Instance.SkinnedMeshRenderer.materials[0].color;
     }
 }
