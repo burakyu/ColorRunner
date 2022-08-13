@@ -22,6 +22,6 @@ public class Player : MonoSingleton<Player>
         Rigidbody = GetComponent<Rigidbody>();
 
         Animator = GetComponentInChildren<Animator>();
-        SkinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
     }
 }

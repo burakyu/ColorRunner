@@ -26,7 +26,7 @@ public class ColorManager : MonoBehaviour
     // Change player's color when the player goes through the gate
     private void ColorChanger(Color gateColor)
     {
-        Debug.Log("BBBBBBB");
+        //Debug.Log("BBBBBBB");
         Player.Instance.SkinnedMeshRenderer.materials[0].color = Color.Lerp(Player.Instance.SkinnedMeshRenderer.materials[0].color, gateColor, 0.4f);
         EventManager.OnColorChange.Invoke();
         CompareColors();

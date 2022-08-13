@@ -39,7 +39,7 @@ public class LevelManager : MonoSingleton<LevelManager>
             SceneManager.LoadSceneAsync(currentSceneIndex);
 
         }
-
+        GameManager.Instance.isGameStart = false;
         Debug.Log(currentLevel);
         
     }
@@ -51,9 +51,11 @@ public class LevelManager : MonoSingleton<LevelManager>
         currentSceneIndex = (currentLevel % 4) + 1;
         //Debug.Log(currentLevel);
         SceneManager.LoadScene(currentSceneIndex);
+        GameManager.Instance.isGameStart = false;
     }
     public void Restart()
     {
         SceneManager.LoadScene(currentSceneIndex);
+        GameManager.Instance.isGameStart = false;
     }
 }
