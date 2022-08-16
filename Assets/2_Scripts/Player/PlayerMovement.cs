@@ -13,12 +13,14 @@ public class PlayerMovement : Player
 
     private void OnEnable()
     {
-        EventManager.OnLevelEnd.AddListener(LevelEndMovement);
+        EventManager.OnLevelWin.AddListener(LevelWinMovement);
+        EventManager.OnLevelFail.AddListener(LevelFailMovement);
     }
 
     private void OnDisable()
     {
-        EventManager.OnLevelEnd.RemoveListener(LevelEndMovement);
+        EventManager.OnLevelWin.RemoveListener(LevelWinMovement);
+        EventManager.OnLevelFail.RemoveListener(LevelFailMovement);
     }
 
     void Update()
@@ -58,9 +60,18 @@ public class PlayerMovement : Player
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -xRange, xRange), transform.position.y, transform.position.z);
     }
 
-    void LevelEndMovement()
+    void LevelWinMovement()
     {
         Animator.SetTrigger("IsGameWin");
+        horizontalSpeed = 0;
+        verticalSpeed = 0;
+        transform.DORotate(new Vector3(0, 180, 0), 2);
+        transform.DOMoveX(0, 1);
+    }
+    
+    void LevelFailMovement()
+    {
+        Animator.SetTrigger("IsGameFail");
         horizontalSpeed = 0;
         verticalSpeed = 0;
         transform.DORotate(new Vector3(0, 180, 0), 2);

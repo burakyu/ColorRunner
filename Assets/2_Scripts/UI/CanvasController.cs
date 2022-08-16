@@ -13,19 +13,44 @@ public class CanvasController : MonoSingleton<CanvasController>
     private void OnEnable()
     {
         finalUI.gameObject.SetActive(false);
+        winMenu.gameObject.SetActive(false);
+        failMenu.gameObject.SetActive(false);
         EventManager.OnLevelEnd.AddListener(OpenFinalUI);
+        EventManager.OnLevelWin.AddListener(OpenWinMenu);
+        EventManager.OnLevelFail.AddListener(OpenFailMenu);
+
     }
 
     private void OnDisable()
     {
         EventManager.OnLevelEnd.RemoveListener(OpenFinalUI);
+        EventManager.OnLevelWin.RemoveListener(OpenWinMenu);
+        EventManager.OnLevelFail.RemoveListener(OpenFailMenu);
+
     }
 
     void OpenFinalUI()
     {
-        //Debug.Log("game is end");
         finalUI.gameObject.SetActive(true);
-        
-        //////successPercentageSlider.value = Mathf.Lerp(0, ColorCompare.Instance.successPercentage, 5 *Time.deltaTime);
+    }
+
+    void OpenWinMenu()
+    {
+        StartCoroutine(OpenWinMenuCo());
+    }
+    IEnumerator OpenWinMenuCo()
+    {
+        yield return new WaitForSeconds(3.5f);
+        winMenu.gameObject.SetActive(true);
+    }
+    
+    void OpenFailMenu()
+    {
+        StartCoroutine(OpenFailMenuCo());
+    }
+    IEnumerator OpenFailMenuCo()
+    {
+        yield return new WaitForSeconds(3.5f);
+        failMenu.gameObject.SetActive(true);
     }
 }

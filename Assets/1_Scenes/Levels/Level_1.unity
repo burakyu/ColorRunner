@@ -7714,7 +7714,7 @@ GameObject:
   - component: {fileID: 1183747538}
   - component: {fileID: 1183747540}
   m_Layer: 0
-  m_Name: managerdeneme
+  m_Name: managertest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9443,7 +9443,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 278571802}
   m_FillRect: {fileID: 205572839}
   m_HandleRect: {fileID: 278571801}
@@ -11075,7 +11075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -41, y: -41.000122}
+  m_AnchoredPosition: {x: -41, y: -41.000244}
   m_SizeDelta: {x: 248.8353, y: 75.463}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5921861700743173000

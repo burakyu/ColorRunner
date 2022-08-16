@@ -44,7 +44,10 @@ public class ColorCompare : MonoSingleton<ColorCompare>
     {
         float totalRGBValue = Mathf.Abs(endColorDiff.r) + Mathf.Abs(endColorDiff.g) + Mathf.Abs(endColorDiff.b);
         successPercentage = ((3 - totalRGBValue) * 33.3f) - failurePoint ;
-        
+        if (successPercentage<0)
+        {
+            successPercentage = 1;
+        }
         Debug.Log(((int)successPercentage));
     }
 }
