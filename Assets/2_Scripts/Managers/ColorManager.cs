@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ColorManager : MonoBehaviour
 {
-    public GameData GameData;
-
     private void OnEnable()
     {
         EventManager.OnDoorTriggered.AddListener(ColorChanger);
