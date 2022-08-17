@@ -14,11 +14,11 @@ public class LevelManager : MonoSingleton<LevelManager>
     public void LoadScene()
     {
         CurrentLevel = PlayerPrefs.GetInt("currentLevel");
-        if ((currentLevel % 6) == 0)
+        if ((currentLevel % 4) == 0)
         {
             currentLevel++;
         }
-        currentSceneIndex = (currentLevel % 6);
+        currentSceneIndex = (currentLevel % 4);
         if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
         {
             SceneManager.LoadSceneAsync(currentSceneIndex);
@@ -33,11 +33,11 @@ public class LevelManager : MonoSingleton<LevelManager>
     {
         currentLevel++;
         PlayerPrefs.SetInt("currentLevel", currentLevel);
-        if ((currentLevel % 6) == 0)
+        if ((currentLevel % 4) == 0)
         {
             currentLevel++;
         }
-        currentSceneIndex = (currentLevel % 6);
+        currentSceneIndex = (currentLevel % 4);
         SceneManager.LoadScene(currentSceneIndex);
         EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
