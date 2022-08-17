@@ -9,6 +9,7 @@ public static class EventManager
     public static UnityEvent OnLevelStart = new UnityEvent();
     public static UnityEvent OnLevelWin = new UnityEvent();
     public static UnityEvent OnLevelFail = new UnityEvent();
+    public static UnityEvent OnLevelChange = new UnityEvent();
     public static UnityEvent<Color> OnDoorTriggered = new UnityEvent<Color>();
     public static UnityEvent OnColorChange = new UnityEvent();
     //public static UnityEvent OnLoadingBarComplete = new UnityEvent();

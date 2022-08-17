@@ -9,35 +9,19 @@ public class LevelManager : MonoSingleton<LevelManager>
     public int CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
 
     private int currentSceneIndex;
-   // public int CurrentSceneIndex { get { return currentSceneIndex; } private set { currentSceneIndex = currentLevel % 4; } }
-
-    private void OnEnable()
-    {
-        //PlayerPrefs.DeleteAll();
-        //CurrentLevel = PlayerPrefs.GetInt("currentLevel");
-        //currentSceneIndex = (currentLevel % 4) + 1;
-        //if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
-        //{
-        //    SceneManager.LoadScene(currentSceneIndex);
-
-        //}
-
-        //Debug.Log(currentLevel);
-    }
-
-    private void Start()
-    {
-        //StartCoroutine(LoadSceneCo());
-    }
 
     public void LoadScene()
     {
         CurrentLevel = PlayerPrefs.GetInt("currentLevel");
-        currentSceneIndex = (currentLevel % 4) + 1;
+        if ((currentLevel % 6) == 0)
+        {
+            currentLevel++;
+        }
+        currentSceneIndex = (currentLevel % 6);
         if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
         {
             SceneManager.LoadSceneAsync(currentSceneIndex);
-
+            EventManager.OnLevelChange.Invoke();
         }
         GameManager.Instance.isGameStart = false;
         Debug.Log(currentLevel);
@@ -48,14 +32,20 @@ public class LevelManager : MonoSingleton<LevelManager>
     {
         currentLevel++;
         PlayerPrefs.SetInt("currentLevel", currentLevel);
-        currentSceneIndex = (currentLevel % 4) + 1;
+        if ((currentLevel % 6) == 0)
+        {
+            currentLevel++;
+        }
+        currentSceneIndex = (currentLevel % 6);
         //Debug.Log(currentLevel);
         SceneManager.LoadScene(currentSceneIndex);
+        EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
     }
     public void Restart()
     {
         SceneManager.LoadScene(currentSceneIndex);
+        EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
     }
 }
