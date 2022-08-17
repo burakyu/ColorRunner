@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LoadingBar : MonoBehaviour
 {
+    public GameObject loadingPanel;
     private Slider slider;
 
     public float fillSpeed = 0.5f;
@@ -28,8 +29,10 @@ public class LoadingBar : MonoBehaviour
         }
         else if (slider.value == targetProgress && !isGameStart)
         {
-            LevelManager.Instance.LoadScene();
             isGameStart = true;
+            LevelManager.Instance.LoadScene();
+            loadingPanel.SetActive(false);
+
         }
     }
 

@@ -25,7 +25,8 @@ public class CanvasController : MonoSingleton<CanvasController>
         EventManager.OnLevelEnd.AddListener(OpenFinalUI);
         EventManager.OnLevelWin.AddListener(OpenWinMenu);
         EventManager.OnLevelFail.AddListener(OpenFailMenu);
-
+        EventManager.OnLevelChange.AddListener(CloseAllMenus);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class CanvasController : MonoSingleton<CanvasController>
         EventManager.OnLevelEnd.RemoveListener(OpenFinalUI);
         EventManager.OnLevelWin.RemoveListener(OpenWinMenu);
         EventManager.OnLevelFail.RemoveListener(OpenFailMenu);
+        EventManager.OnLevelChange.AddListener(CloseAllMenus);
 
     }
 
@@ -62,5 +64,12 @@ public class CanvasController : MonoSingleton<CanvasController>
     {
         yield return new WaitForSeconds(3.5f);
         failMenu.gameObject.SetActive(true);
+    }
+
+    void CloseAllMenus()
+    {
+        failMenu.SetActive(false);
+        winMenu.SetActive(false);
+        finalUI.SetActive(false);
     }
 }
