@@ -25,7 +25,7 @@ public class CanvasController : MonoSingleton<CanvasController>
         EventManager.OnLevelEnd.AddListener(OpenFinalUI);
         EventManager.OnLevelWin.AddListener(OpenWinMenu);
         EventManager.OnLevelFail.AddListener(OpenFailMenu);
-
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnDisable()
