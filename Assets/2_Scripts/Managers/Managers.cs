@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
+    // Start is called before the first frame update
     void Start()
     {
-        //Don't Destroy On Load parent object of all managers
+        
         DontDestroyOnLoad(this.gameObject);
+        Debug.Log("starter");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

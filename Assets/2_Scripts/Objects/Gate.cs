@@ -10,12 +10,11 @@ public class Gate : MonoBehaviour
     {
         gateColor = GetComponent<Renderer>().material.color;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            EventManager.OnGateTriggered.Invoke(gateColor);
+            EventManager.OnDoorTriggered.Invoke(gateColor);
         }
     }
 

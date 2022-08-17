@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    //public GameData gameData;
     public bool isGameStart;
     public bool isGameEnd;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +17,11 @@ public class GameManager : MonoSingleton<GameManager>
     private void OnEnable()
     {
         EventManager.OnLevelEnd.AddListener(StopTheGame);
-        EventManager.OnLevelChange.AddListener(resetBooleans);
     }
 
     private void OnDisable()
     {
         EventManager.OnLevelEnd.RemoveListener(StopTheGame);
-        EventManager.OnLevelChange.RemoveListener(resetBooleans);
-
     }
 
     // Update is called once per frame
@@ -40,11 +37,5 @@ public class GameManager : MonoSingleton<GameManager>
     private void StopTheGame()
     {
         isGameEnd = true;
-    }
-
-    void resetBooleans()
-    {
-        isGameStart = false;
-        isGameEnd = false;
     }
 }

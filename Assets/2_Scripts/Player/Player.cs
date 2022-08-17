@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoSingleton<Player>
 {
+   // public PlayerRenderer PlayerRenderer { get; private set; }
     public PlayerMovement PlayerMovement { get; private set; }
    
     public Rigidbody Rigidbody { get; private set; }
@@ -13,7 +14,10 @@ public class Player : MonoSingleton<Player>
 
     private void Awake()
     {
+        //PlayerRenderer = GetComponent<PlayerRenderer>();
         PlayerMovement = GetComponent<PlayerMovement>();
+
+        //PlayerCollection = GetComponentInChildren<PlayerCollection>();
 
         Rigidbody = GetComponent<Rigidbody>();
 

@@ -8,14 +8,11 @@ public class FinalUI : MonoBehaviour
 {
     [SerializeField] Slider successPercentageSlider;
     [SerializeField] TextMeshProUGUI successPercentageText;
-    private void OnEnable()
-    {
-        EventManager.OnLevelChange.AddListener(resetSlider);
-    }
 
-    private void OnDisable()
+    // Start is called before the first frame update
+    void Start()
     {
-        EventManager.OnLevelChange.RemoveListener(resetSlider);
+        
     }
 
     // Update is called once per frame
@@ -23,13 +20,12 @@ public class FinalUI : MonoBehaviour
     {
         if (successPercentageSlider.value < ColorCompare.Instance.successPercentage / 100)
         {
-            successPercentageSlider.value += 1f * Time.deltaTime;
+            successPercentageSlider.value += 0.5f * Time.deltaTime;
             successPercentageText.text = ((int)ColorCompare.Instance.successPercentage) + "%";
         }
-    }
-
-    void resetSlider()
-    {
-        successPercentageSlider.value = 0;
+        //else if (successPercentageSlider.value == ColorCompare.Instance.successPercentage / 100)
+        //{
+        //    //LevelManager.Instance.LoadScene();
+        //}
     }
 }

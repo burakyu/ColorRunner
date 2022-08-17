@@ -9,45 +9,53 @@ public class LevelManager : MonoSingleton<LevelManager>
     public int CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
 
     private int currentSceneIndex;
+   // public int CurrentSceneIndex { get { return currentSceneIndex; } private set { currentSceneIndex = currentLevel % 4; } }
 
-    // Load scene when the starter scenes's loading bar full
+    private void OnEnable()
+    {
+        //PlayerPrefs.DeleteAll();
+        //CurrentLevel = PlayerPrefs.GetInt("currentLevel");
+        //currentSceneIndex = (currentLevel % 4) + 1;
+        //if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
+        //{
+        //    SceneManager.LoadScene(currentSceneIndex);
+
+        //}
+
+        //Debug.Log(currentLevel);
+    }
+
+    private void Start()
+    {
+        //StartCoroutine(LoadSceneCo());
+    }
+
     public void LoadScene()
     {
         CurrentLevel = PlayerPrefs.GetInt("currentLevel");
-        if ((currentLevel % 4) == 0)
-        {
-            currentLevel++;
-        }
-        currentSceneIndex = (currentLevel % 4);
+        currentSceneIndex = (currentLevel % 4) + 1;
         if (SceneManager.GetActiveScene().buildIndex != (currentSceneIndex))
         {
             SceneManager.LoadSceneAsync(currentSceneIndex);
-            EventManager.OnLevelChange.Invoke();
+
         }
         GameManager.Instance.isGameStart = false;
         Debug.Log(currentLevel);
+        
     }
 
-    // If the game is won, it advances to the next level.
     public void NextLevel()
     {
         currentLevel++;
         PlayerPrefs.SetInt("currentLevel", currentLevel);
-        if ((currentLevel % 4) == 0)
-        {
-            currentLevel++;
-        }
-        currentSceneIndex = (currentLevel % 4);
+        currentSceneIndex = (currentLevel % 4) + 1;
+        //Debug.Log(currentLevel);
         SceneManager.LoadScene(currentSceneIndex);
-        EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
     }
-
-    //If the game is fails, it repeats the level.
     public void Restart()
     {
         SceneManager.LoadScene(currentSceneIndex);
-        EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
     }
 }
