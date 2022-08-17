@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorManager : MonoBehaviour
+public class ColorManager : MonoSingleton<ColorManager>
 {
     private void OnEnable()
     {
-        EventManager.OnDoorTriggered.AddListener(ColorChanger);
+        EventManager.OnGateTriggered.AddListener(ColorChanger);
     }
 
     private void OnDisable()
     {
-        EventManager.OnDoorTriggered.RemoveListener(ColorChanger);
+        EventManager.OnGateTriggered.RemoveListener(ColorChanger);
     }
 
     // Change player's color when the player goes through the gate
