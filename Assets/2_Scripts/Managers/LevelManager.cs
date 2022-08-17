@@ -10,6 +10,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     private int currentSceneIndex;
 
+    // Load scene when the starter scenes's loading bar full
     public void LoadScene()
     {
         CurrentLevel = PlayerPrefs.GetInt("currentLevel");
@@ -25,9 +26,9 @@ public class LevelManager : MonoSingleton<LevelManager>
         }
         GameManager.Instance.isGameStart = false;
         Debug.Log(currentLevel);
-        
     }
 
+    // If the game is won, it advances to the next level.
     public void NextLevel()
     {
         currentLevel++;
@@ -37,11 +38,12 @@ public class LevelManager : MonoSingleton<LevelManager>
             currentLevel++;
         }
         currentSceneIndex = (currentLevel % 6);
-        //Debug.Log(currentLevel);
         SceneManager.LoadScene(currentSceneIndex);
         EventManager.OnLevelChange.Invoke();
         GameManager.Instance.isGameStart = false;
     }
+
+    //If the game is fails, it repeats the level.
     public void Restart()
     {
         SceneManager.LoadScene(currentSceneIndex);

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    //public GameData gameData;
     public bool isGameStart;
     public bool isGameEnd;
+
     // Start is called before the first frame update
     void Start()
     {

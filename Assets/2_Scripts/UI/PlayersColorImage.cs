@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayersColorImage : MonoBehaviour
 {
     Image imageColor;
+
     private void OnEnable()
     {
         EventManager.OnColorChange.AddListener(UpdateColor);
@@ -21,8 +22,11 @@ public class PlayersColorImage : MonoBehaviour
         imageColor = GetComponent<Image>();
         UpdateColor();
     }
+
+    //Update current color on UI
     public void UpdateColor()
     {
-        imageColor.color =new Color(Player.Instance.SkinnedMeshRenderer.materials[0].color.r, Player.Instance.SkinnedMeshRenderer.materials[0].color.g, Player.Instance.SkinnedMeshRenderer.materials[0].color.b, 1);
+        Color playersColor = new Color(Player.Instance.SkinnedMeshRenderer.materials[0].color.r, Player.Instance.SkinnedMeshRenderer.materials[0].color.g, Player.Instance.SkinnedMeshRenderer.materials[0].color.b, 1);
+        imageColor.color = playersColor;
     }
 }

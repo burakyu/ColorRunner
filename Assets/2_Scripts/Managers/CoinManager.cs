@@ -5,7 +5,6 @@ using UnityEngine;
 public class CoinManager : MonoSingleton<CoinManager>
 {
     public int coinCount;
-
     private void OnEnable()
     {
         coinCount = PlayerPrefs.GetInt("coinCount");
@@ -17,6 +16,7 @@ public class CoinManager : MonoSingleton<CoinManager>
         EventManager.OnLevelWin.AddListener(UpdateCointCount);
     }
 
+    //Update coin count on level win
     void UpdateCointCount()
     {
         coinCount += ((int)ColorCompare.Instance.successPercentage);

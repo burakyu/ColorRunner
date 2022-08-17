@@ -12,7 +12,6 @@ public class ColorCompare : MonoSingleton<ColorCompare>
     private void OnEnable()
     {
         EventManager.OnLevelEnd.AddListener(CompareColors);
-
     }
 
     private void OnDisable()
@@ -37,7 +36,6 @@ public class ColorCompare : MonoSingleton<ColorCompare>
             CalculateSuccessPercentage(0);
             EventManager.OnLevelWin.Invoke();
         }
-        
     }
 
     public void CalculateSuccessPercentage(int failurePoint)
