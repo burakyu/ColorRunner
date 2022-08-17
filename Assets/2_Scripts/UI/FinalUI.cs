@@ -21,7 +21,7 @@ public class FinalUI : MonoBehaviour
         if (successPercentageSlider.value < ColorCompare.Instance.successPercentage / 100)
         {
             successPercentageSlider.value += 0.5f * Time.deltaTime;
-            successPercentageText.text = "%" + ((int)(successPercentageSlider.value * 100));
+            successPercentageText.text = ((int)ColorCompare.Instance.successPercentage) + "%";
         }
         //else if (successPercentageSlider.value == ColorCompare.Instance.successPercentage / 100)
         //{

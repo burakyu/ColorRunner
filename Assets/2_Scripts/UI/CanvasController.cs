@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class CanvasController : MonoSingleton<CanvasController>
 {
     [SerializeField] GameObject finalUI;
+
     [SerializeField] GameObject winMenu;
+    [SerializeField] TextMeshProUGUI winMenuAccurateText;
+
     [SerializeField] GameObject failMenu;
+    [SerializeField] TextMeshProUGUI failMenuAccurateText;
+
+    [SerializeField] TextMeshProUGUI winningCoinCountText;
 
     private void OnEnable()
     {
@@ -37,6 +44,8 @@ public class CanvasController : MonoSingleton<CanvasController>
     void OpenWinMenu()
     {
         StartCoroutine(OpenWinMenuCo());
+        winMenuAccurateText.text = (int)ColorCompare.Instance.successPercentage + "% Accurate";
+        winningCoinCountText.text = "+" + (int)ColorCompare.Instance.successPercentage;
     }
     IEnumerator OpenWinMenuCo()
     {
@@ -47,6 +56,7 @@ public class CanvasController : MonoSingleton<CanvasController>
     void OpenFailMenu()
     {
         StartCoroutine(OpenFailMenuCo());
+        failMenuAccurateText.text = (int)ColorCompare.Instance.successPercentage + "% Accurate";
     }
     IEnumerator OpenFailMenuCo()
     {
